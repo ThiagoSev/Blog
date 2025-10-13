@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login e Cadastro</title>
-  <link rel="stylesheet" href="styleLogin.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login e Cadastro</title>
+    <link rel="stylesheet" href="styles/styleLogin.css" />
+    <script type="module" src="backend/auth.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Formulário de Login -->
+      <form id="loginForm">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+        <div class="link">
+          Ainda não tem conta?
+          <a href="#" onclick="toggleForms()">Clique aqui</a>
+        </div>
+      </form>
 
-  <div class="container">
-    <!-- Formulário de Login -->
-    <form id="loginForm">
-      <h2>Login</h2>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Senha" required>
-      <button type="submit">Entrar</button>
-      <div class="link">
-        Ainda não tem conta? <a href="#" onclick="toggleForms()">Clique aqui</a>
-      </div>
-    </form>
+      <!-- Formulário de Cadastro -->
+      <form id="registerForm">
+        <h2>Cadastro</h2>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Senha" required />
+        <button type="submit">Cadastrar</button>
+        <div class="link">
+          Já tem conta? <a href="#" onclick="toggleForms()">Clique aqui</a>
+        </div>
+      </form>
+    </div>
 
-    <!-- Formulário de Cadastro -->
-    <form id="registerForm">
-      <h2>Cadastro</h2>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Senha" required>
-      <button type="submit">Cadastrar</button>
-      <div class="link">
-        Já tem conta? <a href="#" onclick="toggleForms()">Clique aqui</a>
-      </div>
-    </form>
-  </div>
+    <script>
+      function toggleForms() {
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
 
-  <script>
-    function toggleForms() {
-      const loginForm = document.getElementById('loginForm');
-      const registerForm = document.getElementById('registerForm');
-
-      if (loginForm.style.display === 'none') {
-        loginForm.style.display = 'block';
-        registerForm.style.display = 'none';
-      } else {
-        loginForm.style.display = 'none';
-        registerForm.style.display = 'block';
+        if (loginForm.style.display === "none") {
+          loginForm.style.display = "block";
+          registerForm.style.display = "none";
+        } else {
+          loginForm.style.display = "none";
+          registerForm.style.display = "block";
+        }
       }
-    }
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
