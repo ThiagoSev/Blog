@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f0f0f0;
+  background: #200569;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  background: #fff;
+  background: #875bff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -18,21 +18,23 @@ body {
 
 h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: #ffffff;
 }
 
 input {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   border-radius: 5px;
+  background-color: #fff;
+  color: #ffffff;
 }
 
 button {
   width: 100%;
-  background: #007bff;
-  color: white;
+  background: #4824a8;
+  color: #fff;
   border: none;
   padding: 10px;
   border-radius: 5px;
@@ -42,7 +44,7 @@ button {
 }
 
 button:hover {
-  background: #0056b3;
+  background: #351886;
 }
 
 .link {
@@ -51,12 +53,13 @@ button:hover {
 }
 
 .link a {
-  color: #007bff;
+  color: #fff;
   text-decoration: none;
 }
 
 .link a:hover {
   text-decoration: underline;
+  color: #351886;
 }
 
 /* Oculta o formulário de cadastro por padrão */
