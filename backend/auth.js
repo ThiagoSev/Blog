@@ -8,35 +8,39 @@ import {
 // Seleciona os formulários
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
 
-// 🔹 LOGIN
+// Login
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const email = loginForm.querySelector('input[type="email"]').value;
-  const password = loginForm.querySelector('input[type="password"]').value;
+  const email = emailInput.value;
+  const password = passwordInput.value;
 
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    alert("✅ Login realizado com sucesso!");
     console.log("Usuário logado:", userCredential.user);
+    window.location.href = "../home.html";
   } catch (error) {
-    alert("❌ Erro no login: " + error.message);
+    alert(" Erro no login: " + error.message);
+    console.log("Erro ao autenticar usuario:" + error.message);
   }
 });
 
-// 🔹 CADASTRO
+// Cadastro
 registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const email = registerForm.querySelector('input[type="email"]').value;
-  const password = registerForm.querySelector('input[type="password"]').value;
+  const email = emailInput.value;
+  const password = passwordInput.value;
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    alert("✅ Cadastro realizado com sucesso!");
+    alert("Cadastro realizado com sucesso!");
     console.log("Usuário criado:", userCredential.user);
   } catch (error) {
-    alert("❌ Erro no cadastro: " + error.message);
+    alert("Erro no cadastro: " + error.message);
+    console.log("Erro ao cadastrar usuario:" + error.message);
   }
 });
