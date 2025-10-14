@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles/style.css" />
-  <script type="module" src="backend/homeAuth.js"></script>
+  <link rel="stylesheet" href="../styles/styleHome.css" />
+  <script type="module" src="../backend/homeAuth.js"></script>
   <title>Home</title>
 </head>
 
@@ -19,7 +19,7 @@
   <section>
     <div class="criarArtigo">
       <h2>criar artigo</h2>
-      <a href="criarArtigo.html">criar artigo</a>
+      <a href="../criarArtigo.html">criar artigo</a>
     </div>
   </section>
   <section>

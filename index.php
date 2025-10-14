@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entrar</title>
-    <link rel="stylesheet" href="styles/styleLogin.css" />
+    <link rel="stylesheet" href="./styles/styleLogin.css" />
 </head>
 
 <body>
@@ -48,7 +48,7 @@
             }
         }
     </script>
-    <script type="module" src="backend/auth.js"></script>
+    <script type="module" src="./backend/auth.js"></script>
 </body>
 
 </html>
