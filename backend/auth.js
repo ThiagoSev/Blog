@@ -21,7 +21,7 @@ loginForm.addEventListener("submit", async (e) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("Usuário logado:", userCredential.user);
-    window.location.href = "../home.html";
+    window.location.href = "home.php";
   } catch (error) {
     alert(" Erro no login: " + error.message);
     console.log("Erro ao autenticar usuario:" + error.message);
@@ -39,6 +39,7 @@ registerForm.addEventListener("submit", async (e) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     alert("Cadastro realizado com sucesso!");
     console.log("Usuário criado:", userCredential.user);
+    window.location.href = "home.php";
   } catch (error) {
     alert("Erro no cadastro: " + error.message);
     console.log("Erro ao cadastrar usuario:" + error.message);
