@@ -14,9 +14,17 @@
       <div class="cabecalho">
         <h1 class="tituloArtigo">Criar Artigo</h1>
         <h2 class="">Titulo do Artigo</h2>
+        <input type="text" placeholder="Digite aqui o título do artigo"/>
         <h2 class="">Conteúdo</h2>
-        <h2 class="">Imagens</h2>
-        <h2 class="">Seu nome</h2>
+        <textarea placeholder="Digite aqui o conteúdo do seu artigo"></textarea>
+        <h2 class="">Imagem</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <label for="file">Selecione o arquivo:</label>
+          <input type="file" id="file" name="file">
+          <button type="submit">Enviar</button>
+        </form>
+        <h2 class="">Autor</h2>
+        <input type="text" placeholder="Digite aqui o nome do autor do artigo"/>
       </div>
       <div class="">
         <p>Paragrafo 1</p>
