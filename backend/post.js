@@ -1,85 +1,73 @@
-import { auth, db } from "./firebaseConfig.js";
-import {
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { db, auth } from "./firebaseConfig.js";
 import {
   collection,
   addDoc,
-  serverTimestamp,
-  onSnapshot,
-  query,
-  orderBy
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-const logoutBtn = document.getElementById("logoutBtn");
+// Seleciona o formulário e elementos
 const postForm = document.getElementById("postForm");
-const postsContainer = document.getElementById("postsContainer");
+const titleInput = document.getElementById("title");
+const contentInput = document.getElementById("content");
+const authorInput = document.getElementById("author");
+const submitBtn = document.getElementById("submitPost");
+const msgBox = document.getElementById("postMessage");
 
-let currentUser = null;
+// Função utilitária para mostrar mensagens rápidas
+function showMessage(text, isError = false) {
+  if (!msgBox) return;
+  msgBox.textContent = text;
+  msgBox.style.color = isError ? "crimson" : "green";
+  setTimeout(() => { msgBox.textContent = ""; }, 5000);
+}
 
-// Verifica se o usuário está logado
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    currentUser = user;
-    carregarPostagens();
-  } else {
-    window.location.href = "../index.php";
-  }
-});
-
-// Logout
-logoutBtn.addEventListener("click", async () => {
-  await signOut(auth);
-  window.location.href = "../index.php";
-});
-
-//  Enviar nova postagem
-postForm.addEventListener("submit", async (e) => {
+postForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const titulo = document.getElementById("titulo").value.trim();
-  const conteudo = document.getElementById("conteudo").value.trim();
+  const title = titleInput.value.trim();
+  const content = contentInput.value.trim();
+  let author = authorInput.value.trim();
 
-  if (!titulo || !conteudo) return alert("Preencha todos os campos!");
+  // Validação simples
+  if (!title) return showMessage("Informe o título do post.", true);
+  if (!content) return showMessage("Informe o conteúdo do post.", true);
+  if (!author) {
+  
+    const user = auth.currentUser; // Tenta pegar o email de usuário se o campo "Autor" for vazio
+    if (user && user.email) author = user.email;
+    else author = "Anônimo";
+  }
+
+  // Desabilita botão para evitar múltiplos clicks
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Enviando...";
 
   try {
-    await addDoc(collection(db, "posts"), {
-      titulo,
-      conteudo,
-      autor: currentUser.email,
-      data: serverTimestamp()
+    // Referência para coleção 'posts'
+    const postsCol = collection(db, "posts");
+
+    // Adiciona documento com data e hora atuais para a data
+    const docRef = await addDoc(postsCol, {
+      title,
+      content,
+      author,
+      createdAt: serverTimestamp()
     });
 
+    showMessage("Post publicado com sucesso!");
+    console.log("Post criado com ID:", docRef.id);
+
+    // limpa form
     postForm.reset();
-    alert("Postagem publicada com sucesso!");
+
+    // Redireciona para Home
+    window.location.href = "./pages/home.php";
+
   } catch (error) {
-    console.error("Erro ao publicar:", error);
-    alert("Erro ao publicar o post.");
+    console.error("Erro ao publicar post:", error);
+    showMessage("Erro ao publicar post: " + error.message, true);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Publicar";
   }
 });
-
-// Carregar postagens em tempo real
-function carregarPostagens() {
-  const q = query(collection(db, "posts"), orderBy("data", "desc"));
-
-  onSnapshot(q, (snapshot) => {
-    postsContainer.innerHTML = "";
-    snapshot.forEach((doc) => {
-      const post = doc.data();
-      const data = post.data?.toDate
-        ? post.data.toDate().toLocaleString("pt-BR")
-        : "";
-
-      const div = document.createElement("div");
-      div.classList.add("post");
-      div.innerHTML = `
-        <h4>${post.titulo}</h4>
-        <p>${post.conteudo}</p>
-        <small>Autor: ${post.autor} | ${data}</small>
-        <hr>
-      `;
-      postsContainer.appendChild(div);
-    });
-  });
-}
