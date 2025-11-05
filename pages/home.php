@@ -5,17 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../styles/styleHome.css" />
-  <script type="module" src="../backend/homeAuth.js"></script>
+  <script type="module" src="../backend/home.js"></script>
   <title>Home</title>
 </head>
 
 <body>
   <header>
     <h1>Mente Inquieta</h1>
-    <nav>
-      <a href="https://x.com/jairbolsonaro" target="_blank">bolsonaro</a>
-    </nav>
   </header>
+  <section id="postsSection">
+    <div id="postsList"></div>
+  </section>
   <section>
     <div class="criarArtigo">
       <h2>criar artigo</h2>

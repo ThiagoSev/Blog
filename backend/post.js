@@ -61,7 +61,7 @@ postForm?.addEventListener("submit", async (e) => {
     postForm.reset();
 
     // Redireciona para Home
-    window.location.href = "./pages/home.php";
+    window.location.href = "./home.php";
 
   } catch (error) {
     console.error("Erro ao publicar post:", error);

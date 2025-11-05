@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 720px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 15px;
+  border-color: blueviolet;
+}
+
+#postMessage {
+  margin-top: 12px;
+  min-height: 20px;
+}
