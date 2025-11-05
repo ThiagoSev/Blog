@@ -11,7 +11,7 @@
 
 <body>
   <header>
-    <h1>Artigos e tal</h1>
+    <h1>Mente Inquieta</h1>
     <nav>
       <a href="https://x.com/jairbolsonaro" target="_blank">bolsonaro</a>
     </nav>
@@ -19,7 +19,7 @@
   <section>
     <div class="criarArtigo">
       <h2>criar artigo</h2>
-      <a href="../criarArtigo.html">criar artigo</a>
+      <a href="./criarArtigo.php">criar artigo</a>
     </div>
   </section>
   <section>
