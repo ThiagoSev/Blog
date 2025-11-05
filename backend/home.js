@@ -1,13 +1,12 @@
-// backend/home.js
 import { auth, db } from "./firebaseConfig.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-// elementos da página
+// Buscando os elementos da página
 const userInfo = document.getElementById("userInfo");
 const logoutBtn = document.getElementById("logoutBtn");
 
-// formata timestamp (caso use createdAt serverTimestamp)
+// Formatação Timestamp
 function formatTimestamp(ts) {
   if (!ts) return "—";
   if (typeof ts.toDate === "function") {
@@ -19,7 +18,7 @@ function formatTimestamp(ts) {
   return isNaN(d) ? "—" : d.toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
-// segura escape simples para evitar XSS
+// Escape simples para segurança
 function escapeHtml(str) {
   if (typeof str !== "string") return str;
   return str
@@ -30,18 +29,18 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-// verifica auth
+// Verifica se usuário está logado
 onAuthStateChanged(auth, (user) => {
   if (user) {
     userInfo.textContent = `Olá, ${user.email}`;
     loadPosts();
   } else {
-    // ajuste o caminho para sua página de login
-    window.location.href = "../pages/login.html";
+    // Redireciona para a página de login
+    window.location.href = "../index.php";
   }
 });
 
-// logout
+// Logout
 logoutBtn?.addEventListener("click", async () => {
   try {
     await signOut(auth);
@@ -51,7 +50,7 @@ logoutBtn?.addEventListener("click", async () => {
   }
 });
 
-// carrega posts (mostra título, autor, data)
+// Carregamento dos posts
 async function loadPosts() {
   try {
     const postsContainer = document.querySelector("#postsList") || document.querySelector("section:nth-of-type(2)");
@@ -62,7 +61,7 @@ async function loadPosts() {
 
     postsContainer.innerHTML = "<p>Carregando artigos...</p>";
 
-    // busca ordenada por data (se for createdAt)
+    // Faz a busca por data (mais recentes no topo)
     const postsCol = collection(db, "posts");
     const q = query(postsCol, orderBy("createdAt", "desc"));
     const snapshot = await getDocs(q);
@@ -72,26 +71,26 @@ async function loadPosts() {
       return;
     }
 
-    postsContainer.innerHTML = ""; // limpa
+    postsContainer.innerHTML = ""; // Limpa o Container
     snapshot.forEach((doc) => {
       const data = doc.data();
 
-      // ajusta nomes de campos conforme seu banco: title/title, titulo, author/autor, createdAt/dataPublicacao
-      const title = data.title ?? data.titulo ?? "Sem título";
-      const author = data.author ?? data.autor ?? "Anônimo";
-      const createdAt = data.createdAt ?? data.dataPublicacao ?? null;
+      // Declara as constantes e busca as informações no banco
+      const title = data.title ?? "Sem título";
+      const author = data.author ?? "Anônimo";
+      const createdAt = data.createdAt ?? null;
 
       const article = document.createElement("article");
       article.className = "artigo";
 
-      // usa template literal (backticks) corretamente — não use aspas “curly”
+      //Estrutura HTML para vizualizar informações do post
       article.innerHTML = `
         <h2 class="tituloArtigo"><a href="./post.php?id=${doc.id}">${escapeHtml(title)}</a></h2>
         <p class="descricaoArtigo">Autor: <strong>${escapeHtml(author)}</strong></p>
         <p class="dataArtigo">Publicado em: ${escapeHtml(formatTimestamp(createdAt))}</p>
       `;
 
-      // clique abre a página de detalhe
+      // Direciona para a página com o post
       article.addEventListener("click", () => {
         window.location.href = `./post.php?id=${doc.id}`;
       });

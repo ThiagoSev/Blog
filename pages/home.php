@@ -13,22 +13,21 @@
   <header>
     <h1>Mente Inquieta</h1>
   </header>
+
+  <!--Seção de renderização dos posts !-->
   <section id="postsSection">
     <div id="postsList"></div>
   </section>
+
+  <!--Seção de redirecionamento para Criar Post !-->
   <section>
     <div class="criarArtigo">
       <h2>criar artigo</h2>
       <a href="./criarArtigo.php">criar artigo</a>
     </div>
   </section>
-  <section>
-    <div class="artigo">
-      <h2 class="tituloArtigo">titulo do artigo</h2>
-      <p class="descricaoArtigo">descricao</p>
-      <p class="dataArtigo">data de publicação</p>
-    </div>
-  </section>
+
+  <!--Seção de Logout !-->
   <section>
     <p id="userInfo"></p>
     <button id="logoutBtn">Sair</button>

@@ -1,10 +1,9 @@
-// backend/postDetail.js
 import { db } from "./firebaseConfig.js";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const postContainer = document.getElementById("postContainer");
-const loadingMsg = document.getElementById("loadingMsg");
 
+//Formatação do Timestamp
 function formatTimestamp(ts) {
   try {
     if (!ts) return "—";
@@ -26,6 +25,7 @@ function formatTimestamp(ts) {
   }
 }
 
+//Escape para segurança básica
 function escapeHtml(str) {
   if (typeof str !== "string") return str;
   return str
@@ -36,7 +36,7 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-// lê parâmetro id da URL
+// Lê o parâmetro ID do objeto na URL
 function getParam(name) {
   return new URLSearchParams(window.location.search).get(name);
 }
@@ -78,7 +78,7 @@ async function loadPost() {
   }
 }
 
-// converte quebras de linha em <br>
+// Troca quebra de linha pela tag <br>
 function nl2br(str) {
   return str.replace(/\n/g, "<br>");
 }
