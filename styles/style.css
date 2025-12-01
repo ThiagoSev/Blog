@@ -1,0 +1,79 @@
+body {
+    font-family: 'Georgia', serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; 
+    color: #333;
+    line-height: 1.7; 
+}
+
+
+#postContainer {
+    margin: 40px auto; 
+    max-width: 800px; 
+    padding: 40px;
+    background-color: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+}
+
+#postContainer h1 {
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    line-height: 1.2;
+    border-bottom: 2px solid #eee; 
+    padding-bottom: 15px;
+}
+
+#postContainer h2 {
+    font-size: 1.8em;
+    margin-top: 30px;
+    color: #444;
+}
+
+#postContainer p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+#postContainer a {
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 1px dashed #007bff;
+    transition: color 0.3s;
+}
+
+#postContainer a:hover {
+    color: #0056b3;
+    border-bottom: 1px solid #0056b3;
+}
+
+
+#loadingMsg {
+    text-align: center;
+    font-size: 1.2em;
+    color: #6c757d;
+    padding: 20px;
+}
+
+
+@media (max-width: 840px) {
+    #postContainer {
+        margin: 20px 10px;
+        padding: 20px;
+        max-width: 95%;
+        border-radius: 0;
+    }
+
+    #postContainer h1 {
+        font-size: 2em;
+    }
+    
+    #postContainer p {
+        font-size: 1em;
+    }
+}

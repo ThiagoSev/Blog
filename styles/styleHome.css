@@ -1,4 +1,212 @@
+
+:root {
+    --primary-purple: #5A35B3;
+    --light-purple: #7D5BBE;
+    --text-dark: #333333;
+    --text-muted: #777777;
+    --background-white: #F4F4F4;
+    --button-accent: #00BCD4;
+    --card-background: #ffffff;
+    --card-border: #e8e8e8;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  align-items: center;
-  text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--background-white);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary-purple);
+    color: var(--text-light); 
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-light); 
+}
+
+
+#postsSection {
+    padding: 40px 20px 20px;
+}
+
+#postsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+    max-width: 1200px; 
+    margin: 20px auto; 
+}
+
+.artigo {
+    padding: 25px; 
+    background: var(--card-background); 
+    border: 1px solid var(--card-border); 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.artigo:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
+}
+
+.tituloArtigo {
+    margin-bottom: 5px;
+}
+
+.tituloArtigo a {
+    font-size: 1.5em; 
+    font-weight: 700; 
+    color: var(--primary-purple); 
+    text-decoration: none;
+    display: inline-block; 
+    line-height: 1.3;
+}
+
+.tituloArtigo a:hover {
+    color: var(--light-purple); 
+    text-decoration: underline; 
+}
+
+.descricaoArtigo, .dataArtigo {
+    font-size: 0.9em; 
+    color: var(--text-muted); 
+    margin: 3px 0;
+}
+
+
+.descricaoArtigo {
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 10px;
+}
+
+.descricaoArtigo strong {
+    font-weight: 600; 
+    color: var(--text-dark); 
+}
+
+
+#postsList p {
+    text-align: center;
+    grid-column: 1 / -1;
+    font-size: 1.2em;
+    color: var(--text-muted);
+    padding: 30px;
+}
+
+
+
+
+section:nth-of-type(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.criarArtigo {
+    background-color: #E3F2FD; 
+    border: 2px solid var(--button-accent); 
+    border-radius: 12px;
+    text-align: center;
+    padding: 30px 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto; 
+}
+
+.criarArtigo h2 {
+    font-size: 1.5em;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.criarArtigo a {
+    display: inline-block;
+    background-color: var(--button-accent); 
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.criarArtigo a:hover {
+    background-color: #00A3B5;
+}
+
+
+
+section:last-child {
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #ffffff;
+}
+
+#userInfo {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+#logoutBtn {
+    background-color: #E74C3C; 
+    border: none;
+    padding: 8px 30px;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-light);
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#logoutBtn:hover {
+    background-color: #C0392B;
+}
+
+
+@media (max-width: 960px) {
+    #postsList {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    #postsList {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+    .artigo {
+        padding: 20px;
+    }
 }

@@ -1,38 +1,114 @@
+
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 720px;
-  margin: auto;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  
+    background-color: #f4f7f6; 
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 40px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #007bff; 
+    padding-bottom: 10px;
+}
+
+#postForm {
+    width: 100%;
+    max-width: 700px; 
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 label {
-  display: block;
-  margin-top: 12px;
-  font-weight: 600;
+    display: block; 
+    font-weight: bold;
+    color: #555;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
 }
 
 input[type="text"],
 textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 6px;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
 textarea {
-  min-height: 160px;
-  resize: vertical;
+    min-height: 250px; 
+    resize: vertical;
+    font-family: inherit; 
 }
 
-button {
-  margin-top: 12px;
-  padding: 10px 16px;
-  cursor: pointer;
-  border-radius: 15px;
-  border-color: blueviolet;
+
+#submitPost {
+    width: 100%;
+    background-color: #28a745; 
+    color: white;
+    padding: 15px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#submitPost:hover {
+    background-color: #1e7e34;
 }
 
 #postMessage {
-  margin-top: 12px;
-  min-height: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #fff3cd; 
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 5px;
+    display: none; 
+}
+
+@media (max-width: 768px) {
+    #postForm {
+        margin: 0 10px;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    #submitPost {
+        padding: 12px 0;
+        font-size: 1.1em;
+    }
 }
